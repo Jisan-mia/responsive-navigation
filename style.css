@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,900&display=swap");
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+}
+
+:root {
+	--primary: #3d89ed;
+	--dark: #232323;
+	--light: #fff;
+	--smoke: whitesmoke;
+	--dark-gray: #999999;
+}
+body {
+	font-family: "Lato", sans-serif;
+	/* background: var(--dark); */
+	/* color: var(--light); */
+}
+
+.container {
+	width: 1152px;
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+.nav-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+nav {
+	width: 100%;
+	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1);
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+}
+
+.brand img {
+	height: 50px;
+	margin-right: 10px;
+}
+
+.nav-wrapper ul.nav-list {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+}
+.nav-wrapper ul.nav-list li {
+	margin-left: 30px;
+	padding: 20px 0;
+	position: relative;
+}
+
+.nav-wrapper ul.nav-list li a {
+	color: var(--dark);
+	text-decoration: none;
+	display: block;
+	letter-spacing: 1px;
+	transition: all 0.3s ease-in-out;
+}
+.nav-wrapper ul.nav-list li a:hover {
+	color: var(--primary);
+}
+
+.nav-wrapper ul.nav-list li.active a {
+	color: var(--primary);
+}
+.btn {
+	background: var(--primary);
+	color: var(--light);
+	outline: none;
+	border: none;
+	padding: 8px 20px;
+	font-size: 14px;
+	cursor: pointer;
+	letter-spacing: 1px;
+	border: 1px solid transparent;
+	transition: all 0.5s ease-in-out;
+}
+.btn:hover {
+	background: transparent;
+	/* border-color: var(--dark-gray); */
+	color: var(--primary);
+	box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1);
+}
+
+button.login-btn {
+	background: var(--primary);
+	color: var(--light);
+}
+button.login-btn:hover {
+	color: var(--dark);
+	background: var(--light);
+}
+main section.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+	margin-top: 160px;
+	/* line-height: 35px; */
+}
+main section.header h1 {
+	font-size: 36px;
+	font-weight: 100;
+	text-transform: capitalize;
+	margin-bottom: 20px;
+}
+main section.header p {
+	font-size: 18px;
+	font-weight: 400;
+	color: var(--dark-gray);
+	margin-bottom: 20px;
+}
+
+nav ul.dropdown-list {
+	list-style-type: none;
+	display: block;
+	background: var(--smoke);
+	padding: 6px 16px;
+	position: absolute;
+	width: max-content;
+	z-index: 9999;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 0;
+	pointer-events: none;
+	/* transition: all 0.5s ease-in-out; */
+}
+.nav-wrapper ul.dropdown-list li {
+	margin-left: 0;
+	padding: 5px 0px;
+}
+.nav-wrapper ul.dropdown-list li a {
+	color: var(--dark);
+}
+.nav-wrapper ul.nav-list li:hover .dropdown-list {
+	opacity: 1;
+	pointer-events: auto;
+	animation: dropdownMoveUp 0.5s ease-in-out forwards;
+}
+
+@keyframes dropdownMoveUp {
+	0% {
+		opacity: 0;
+		transform: translateX(-50%) translateY(50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(-50%) translateY(20px);
+	}
+}
+
+.humburger {
+	display: none;
+}
+
+.mobile .humburger {
+	display: flex;
+	flex-direction: column;
+	padding: 20px 0;
+	cursor: pointer;
+}
+
+.mobile .humburger span.line {
+	background: var(--primary);
+	width: 28px;
+	height: 2px;
+	margin-bottom: 8px;
+}
+
+.mobile ul.nav-list {
+	/* background: -webkit-linear-gradient(45deg, #e0e0e0, #f9fbfc); */
+	background: linear-gradient(45deg, #d8e2ee, #adcff5);
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 80px;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.3s ease-in-out;
+}
+
+.humburger,
+.brand {
+	z-index: 9999;
+}
+
+.mobile ul.nav-list.open {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.mobile .humburger .line {
+	transform-origin: left;
+	transition: all 0.3s ease-in-out;
+}
+
+.mobile ul.nav-list li a {
+	font-size: 20px;
+}
+
+.mobile ul.dropdown-list {
+	position: relative;
+	background: transparent;
+	text-align: center;
+	height: 0;
+	overflow-y: hidden;
+	transition: opacity 1s ease-in-out;
+	padding-top: 0;
+}
+
+.mobile .nav-wrapper ul li:hover .dropdown-list {
+	height: max-content;
+	padding-top: 6px;
+}
+
+.mobile ul.nav-list li {
+	margin-left: 0;
+	text-align: center;
+}
+.mobile .nav-wrapper ul.dropdown-list li a {
+	color: var(--dark-gray);
+}
+
+@media screen and (max-width: 500px) {
+	main section.header {
+		margin-top: 80px;
+	}
+	main section.header h1 {
+		font-size: 1.6em;
+		margin-bottom: 20px;
+	}
+	main section.header p {
+		font-size: 1em;
+		margin-bottom: 20px;
+	}
+}
